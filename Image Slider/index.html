@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+    <div class="wrap">
+        <div id="arrow-left" class="arrow"></div>
+        <div id="slider">
+          <div class="slide slide1">
+            <div class="slide-content">
+              <span>Image One</span>
+            </div>
+          </div>
+          <div class="slide slide2">
+            <div class="slide-content">
+              <span>Image Two</span>
+            </div>
+          </div>
+          <div class="slide slide3">
+            <div class="slide-content">
+              <span>Image Three</span>
+            </div>
+          </div>
+        </div>
+        <div id="arrow-right" class="arrow"></div>
+    </div>
+
+
+    <div class="services-section" id="services">
+        <div class="container">
+            <h3>Current Work and Motivation..</h3>
+            <div class="services-grids">
+                <div class="col-md-6 service-leftgrid">
+                    <div class="service1">
+                        <div class="left-grid1">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        </div>
+                        <div class="left-grid2">
+                            <h4>Current Work </h4>
+                            <p>We develop and use modern DNA techniques, especially Next Gen DNA Sequencing, to address the problems in Ecology, Evolution, Environmental Health and Toxicology.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 service-rightgrid">
+                    <div class="service1">
+                        <div class="left-grid1">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>								
+                            </div>
+                        <div class="left-grid2">
+                            <h4>Motivation </h4>
+                            <p>We use our background in evolutionary biology to develop foundational technologies, then apply them solve problems in human and environmental health.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    <br> <br> <br> <br>
+
+
+    <script>
+        let sliderImages = document.querySelectorAll('.slide'),
+            arrowRight = document.querySelector('#arrow-right'),
+            arrowLeft = document.querySelector('#arrow-left') ,
+            current = 0;
+
+        function reset() {
+            for(let i = 0; i<sliderImages.length; i++) {
+                sliderImages[i].style.display = 'none';
+            }
+        }
+
+        function startSlide() {
+            reset();
+            sliderImages[0].style.display = 'block';
+        }
+
+        function slideLeft() {
+            reset();
+            sliderImages[current - 1].style.display = 'block';
+            current--;
+        }
+
+        function slideRight() {
+        reset();
+        sliderImages[current + 1].style.display = "block";
+        current++;
+        }
+
+        arrowLeft.addEventListener("click", function() {
+        if (current === 0) {
+            current = sliderImages.length;
+        }
+        slideLeft();
+        });
+
+        arrowRight.addEventListener("click", function() {
+        if (current === sliderImages.length - 1) {
+            current = -1;
+        }
+        slideRight();
+        });
+
+        startSlide();
+
+    </script>
+
+</body>
+</html>
+
+
